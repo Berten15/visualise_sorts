@@ -18,6 +18,7 @@ defmodule VisualiseSortsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/hello", HelloController, :index
   end
 
   # Other scopes may use custom stacks.
@@ -25,7 +26,7 @@ defmodule VisualiseSortsWeb.Router do
   #   pipe_through :api
   # end
 
-  
+
 
   # Enables LiveDashboard only for development
   #
