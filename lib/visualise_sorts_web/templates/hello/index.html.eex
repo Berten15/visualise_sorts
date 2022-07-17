@@ -1,3 +1,53 @@
-<div class="jumbotron">
-    <h2> Hello World, from Phoenix! </h2>
-</div>
+
+<HTML>
+
+<canvas id="myChart" width="100%" height="100%"></canvas>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+
+// get data
+
+
+const data = <%= raw(Jason.encode!(getData())) %>
+console.log(data)
+
+//plot
+
+const ctx = document.getElementById('myChart');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: new Array(data.length).fill(""),
+        datasets: [{
+            data: data,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                    drawBorder: false,
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                    drawBorder: false,
+                },
+                ticks: {
+                    display: false,
+                }
+            }]
+        }
+    }
+});
+
+</script>
+
+</HTML>
